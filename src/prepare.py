@@ -12,9 +12,9 @@ async def main():
             await recorder.set_speed_and_dump(V_BASE, V_BASE)
         elif p == 's':
             await recorder.set_speed_and_dump(0, 0)
-        elif p == 'a':
-            await recorder.set_speed_and_dump(recorder.lspeed-0.1*V_BASE, recorder.rspeed)
         elif p == 'd':
+            await recorder.set_speed_and_dump(recorder.lspeed-0.1*V_BASE, recorder.rspeed)
+        elif p == 'a':
             await recorder.set_speed_and_dump(recorder.lspeed, recorder.rspeed-0.1*V_BASE)
         elif p == 'q':
             await recorder.finish()

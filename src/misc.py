@@ -40,3 +40,5 @@ class _GetchWindows:
 
 
 getch = _Getch()
+
+time_diff = lambda l: [0.0] + [l[i+1] - l[i] for i in range(len(l)-1)] if len(l) >= 1 else [0.0]
