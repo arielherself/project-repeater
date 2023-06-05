@@ -20,8 +20,8 @@ class Recorder:
         GPIO.output([EA, I2, EB, I3], GPIO.LOW)
         GPIO.output([I1, I4], GPIO.HIGH)
 
-        self._pwma = GPIO.PWM(EA, FREQUENCY)
-        self._pwmb = GPIO.PWM(EB, FREQUENCY)
+        self._pwma = GPIO.PWM(EB, FREQUENCY)
+        self._pwmb = GPIO.PWM(EA, FREQUENCY)
         self._pwma.start(0)
         self._pwmb.start(0)
         self._lspeed = 0
