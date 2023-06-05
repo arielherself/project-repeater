@@ -3,7 +3,7 @@ import GPIO
 from misc import getch
 
 VL_BASE = 30
-VR_BASE = 27
+VR_BASE = 24.5
 RATIO = 0.1
 
 async def main():
