@@ -63,9 +63,9 @@ class Recorder:
 
     @require_working_lock
     async def set_speed_and_dump(self, lspeed, rspeed):
+        self._actions.append([time.time(), lspeed, rspeed])
         self._pwma.ChangeDutyCycle(lspeed)
         self._pwmb.ChangeDutyCycle(rspeed)
-        self._actions.append([time.time(), lspeed, rspeed])
         self._lspeed, self._rspeed = lspeed, rspeed
         if self.verbosed:
             print(f'lspeed: {lspeed}, rspeed: {rspeed}')
