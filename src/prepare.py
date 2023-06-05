@@ -2,13 +2,15 @@ import asyncio
 import GPIO
 from misc import getch
 
+V_BASE = 30
+
 async def main():
     try:
         recorder = GPIO.Recorder('actions.pkl', verbosed=True)
         while 1:
             p = getch()
             if p == 'w':
-                await recorder.set_speed_and_dump(100, 100)
+                await recorder.set_speed_and_dump(V_BASE, V_BASE)
             elif p == 's':
                 await recorder.set_speed_and_dump(0, 0)
                 await recorder.finish()
