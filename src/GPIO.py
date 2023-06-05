@@ -3,7 +3,7 @@ import time
 from threading import Lock
 import pickle
 
-async def require_working_lock(func):
+def require_working_lock(func):
     async def wrapper(*args, **kwargs):
         self = args[0]
         with self._working_lock:
@@ -11,7 +11,7 @@ async def require_working_lock(func):
     return wrapper
 
 class Recorder:
-    def __init__(self, verbosed=False):
+    def __init__(self, filename, verbosed=False):
         EA, I2, I1, EB, I4, I3 = (
             13, 19, 26, 16, 20, 21)
         FREQUENCY = 50
@@ -29,6 +29,7 @@ class Recorder:
         self._working_lock = Lock()
 
         self._actions = []
+        self.filename = filename
         self.verbosed = verbosed
 
         if verbosed:
@@ -39,7 +40,7 @@ class Recorder:
         self._pwma.stop()
         self._pwmb.stop()
         GPIO.cleanup()
-        with open('actions.pkl', 'wb') as f:
+        with open(self.filename, 'wb') as f:
             pickle.dump(self._actions, f)
 
     @property

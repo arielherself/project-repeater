@@ -3,9 +3,9 @@ import GPIO
 from misc import getch
 
 async def main():
-    recorder = GPIO.Recorder(verbosed=True)
+    recorder = GPIO.Recorder('actions.pkl', verbosed=True)
     while 1:
-        p = getch().decode()
+        p = getch()
         if p == 'w':
             await recorder.set_speed_and_dump(100, 100)
         elif p == 's':
