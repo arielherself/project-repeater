@@ -42,6 +42,8 @@ class Recorder:
         GPIO.cleanup()
         with open(self.filename, 'wb') as f:
             pickle.dump(self._actions, f)
+        if self.verbosed:
+            print('Finished dumping.')
 
     @property
     def lspeed(self):
