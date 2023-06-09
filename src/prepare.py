@@ -3,7 +3,7 @@ import GPIO
 from misc import getch
 
 VL_BASE = 60
-VR_BASE = 56
+VR_BASE = 59
 RATIO = 0.4
 STARTUP_DELTA = 0.1
 STARTUP_TIME = 2
