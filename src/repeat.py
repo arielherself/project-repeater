@@ -16,9 +16,10 @@ async def main():
 
     recorder = GPIO.Recorder('actions_reflection.pkl', verbosed=True)
     try:
-        for time, lspeed, rspeed in f_actions:
-            sleep(time)
-            await recorder.set_speed(lspeed, rspeed)
+        for i in range(int(argv[2])):
+            for time, lspeed, rspeed in f_actions:
+                sleep(time)
+                await recorder.set_speed(lspeed, rspeed)
     except:
         pass
     await recorder.finish()

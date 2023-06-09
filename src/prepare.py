@@ -26,6 +26,9 @@ async def main():
             elif p == 'd':
                 await recorder.set_speed_and_dump(recorder.lspeed, max(recorder.rspeed-RATIO*VR_BASE, 0.0))
             elif p == 'q':
+                await recorder.finish_and_dump()
+                break
+            elif p == 'x':
                 await recorder.finish()
                 break
     except:

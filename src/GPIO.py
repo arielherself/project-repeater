@@ -40,10 +40,17 @@ class Recorder:
         self._pwma.stop()
         self._pwmb.stop()
         GPIO.cleanup()
+        if self.verbosed:
+            print('Stopped.')
+
+    @require_working_lock
+    async def finish_and_dump(self):
+        self.finish()
         with open(self.filename, 'wb') as f:
             pickle.dump(self._actions, f)
         if self.verbosed:
             print('Finished dumping.')
+
 
     @property
     def lspeed(self):
