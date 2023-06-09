@@ -2,16 +2,20 @@ import asyncio
 import GPIO
 from misc import getch
 
-VL_BASE = 30
-VR_BASE = 24.5
-RATIO = 0.1
+VL_BASE = 60
+VR_BASE = 56
+RATIO = 0.4
+STARTUP_DELTA = 0.1
 
 async def main():
     try:
         recorder = GPIO.Recorder('actions.pkl', verbosed=True)
         while 1:
             p = getch()
-            if p == 'w':
+            if p == 'g':
+                await recorder.set_speed_and_dump(VL_BASE, VR_BASE * (1.0 + STARTUP_DELTA))
+                await recorder.set_speed_and_dump(VL_BASE, VR_BASE)
+            elif p == 'w':
                 await recorder.set_speed_and_dump(VL_BASE, VR_BASE)
             elif p == 's':
                 await recorder.set_speed_and_dump(0, 0)
