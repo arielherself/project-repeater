@@ -45,7 +45,7 @@ class Recorder:
 
     @require_working_lock
     async def finish_and_dump(self):
-        self.finish()
+        await self.finish()
         with open(self.filename, 'wb') as f:
             pickle.dump(self._actions, f)
         if self.verbosed:
