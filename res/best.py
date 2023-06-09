@@ -92,8 +92,6 @@ try:
         # 计算出center_now与标准中心点的偏移量
         direction = center_now - 320
 
-        print("偏差值：", direction)
-
         # 更新PID误差
         error[0] = error[1]
         error[1] = error[2]
@@ -106,7 +104,6 @@ try:
             + kp * (error[2] - error[1]) \
             + ki * error[2] \
             + kd * (error[2] - 2 * error[1] + error[0])
-        print(adjust[2])
 
         # 饱和输出限制在control绝对值之内
         if abs(adjust[2]) > control:
