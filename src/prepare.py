@@ -6,6 +6,7 @@ VL_BASE = 60
 VR_BASE = 56
 RATIO = 0.4
 STARTUP_DELTA = 0.1
+STARTUP_TIME = 2
 
 async def main():
     try:
@@ -13,7 +14,8 @@ async def main():
         while 1:
             p = getch()
             if p == 'g':
-                await recorder.set_speed_and_dump(VL_BASE, VR_BASE * (1.0 + STARTUP_DELTA))
+                for _ in range(STARTUP_TIME):
+                    await recorder.set_speed_and_dump(VL_BASE, VR_BASE * (1.0 + STARTUP_DELTA))
                 await recorder.set_speed_and_dump(VL_BASE, VR_BASE)
             elif p == 'w':
                 await recorder.set_speed_and_dump(VL_BASE, VR_BASE)
