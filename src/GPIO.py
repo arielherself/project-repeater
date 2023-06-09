@@ -35,7 +35,6 @@ class Recorder:
         if verbosed:
             print('Ready.')
 
-    @require_working_lock
     async def finish(self):
         self._pwma.stop()
         self._pwmb.stop()
